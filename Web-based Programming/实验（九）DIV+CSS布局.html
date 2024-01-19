@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIV+CSS布局</title>
+</head>
+
+<style type="text/css">
+    * {
+        font: 24px/1.5em 黑体;
+        margin: 0 auto;
+        padding: 0px;
+        /* float: top; */
+    }
+
+
+    .Header {
+        width: 1006px;
+        height: 120px;
+        background: #093;
+    }
+
+    .logo {
+        height: 80px;
+        width: 1006px;
+        background: #5f5;
+        border-bottom: 2px solid white;
+    }
+
+    .nav {
+        height: 40px;
+        width: 1006px;
+        background: #3f5;
+        border-bottom: 2px solid white;
+    }
+
+    .Content {
+        width: 1006px;
+
+        height: 400px;
+        background: #00EEFF;
+    }
+
+    .Content-left {
+        height: 400px;
+        width: 250px;
+        float: left;
+        background: #66ff66;
+        border-right: 2px solid white;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .Content-center-left {
+        height: 400px;
+        width: 250px;
+        float: left;
+        background: #77ff66;
+        border-right: 2px solid white;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .Content-center-right {
+        height: 400px;
+        width: 250px;
+        float: left;
+        background: #88ffDD;
+        border-right: 2px solid white;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .Content-right {
+        height: 400px;
+        width: 250px;
+        float: left;
+        background: #99ff66;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .Footer {
+        height: 40px;
+        width: 1006px;
+        background: #6FC;
+        border-top: 2px solid white;
+    }
+</style>
+
+<body>
+
+
+    <div class="logo">logo</div>
+    <div class="nav">nav</div>
+
+    <div class="Content">
+        <div class="Content-left">Content-left</div>
+        <div class="Content-center">
+            <div class="Content-center-left">Content-center-left</div>
+            <div class="Content-center-right">Content-center-right</div>
+        </div>
+        <div class="Content-right">Content-right</div>
+    </div>
+    <div class="Footer">Footer</div>
+
+
+</body>
+
+</html>

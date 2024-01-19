@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASIO计算器</title>
+
+    <style type="text/css">
+        .output {
+            height: 60px;
+            width: 390px;
+            border: solid 1.5px;
+            z-index: 1;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            background-color: white;
+        }
+
+        #wrap {
+            width: 420px;
+            height: 460px;
+            background-color: #E6E682;
+            /* border: solid 1.5px; */
+            z-index: 0;
+            position: absolute;
+        }
+
+        #body-table {
+            height: 330px;
+            width: 390px;
+            position: absolute;
+            top: 115px;
+            left: 20px;
+            border: solid 1.5px;
+            border-color: grey black black grey;
+
+        }
+
+
+        td {
+            border: 1px solid black;
+            width: 58px;
+            height: 40px;
+            /* margin: 10px; */
+            cursor: pointer;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: separate;
+            /* 让表格的边框独立 */
+            border-spacing: 30px;
+            /* 设置边框间距 */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <img src="http://172.31.233.204/resource/img/exp10_1.jpg"></img>
+        <div class="output"></div>
+        <div>
+            <table id="body-table">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>+</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>=</td>
+                    <td>CE</td>
+                    <td>/</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

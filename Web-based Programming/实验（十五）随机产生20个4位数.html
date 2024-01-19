@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机产生20个4位整数</title>
+</head>
+
+<body>
+    <div>
+        <textarea name="num-area" id="num-area" cols="50" rows="10"></textarea>
+    </div>
+    <div>
+        <button id="random-btn" onclick="handleGenerate()">随机产生20个整数</button>
+        <button id="divide-btn" onclick="handleSearch()">找出能被5整除的整数</button>
+        <button id="reset-btn" onclick="handleReset()">重置</button>
+    </div>
+
+    <script>
+        // write your code here
+		 var flag = 0;
+        var array_int = new Array(20);
+		   function $(id) {
+            return document.getElementById(id);
+        }
+        function handleGenerate() {
+            $("num-area").value = "随机产生20个4位整数，分别如下：\n";
+
+            var m = 1000;
+            var n = 9999;
+            for (let i = 0; i < array_int.length; i++) {
+                array_int[i] = Math.round(Math.random() * (n - m) + m);
+            }
+            $("num-area").value += array_int.join(",");
+            $("num-area").value += "\n";
+            array_int.sort();
+            $("num-area").value += "从小到大排序后结果为：\n";
+            $("num-area").value += array_int.join(",");
+            $("num-area").value += "\n";
+            flag = 1;
+
+        }
+        function handleSearch() {
+if (flag == 1) {
+                var array_tmp = new Array();
+                array_int.forEach(element => {
+                    if (element % 5 == 0) {
+                        array_tmp.push(element);
+                    }
+                });
+                $("num-area").value += "能被5整除的整数有：\n";
+                $("num-area").value += array_tmp.join(",");
+                $("num-area").value += "\n";
+            }
+
+        }
+        function handleReset() {
+          $("num-area").value = "";
+            flag = 0;
+        }
+        // 不可删, 用于自动化测试
+        window.handleGenerate = handleGenerate;
+        window.handleSearch = handleSearch;
+        window.handleReset = handleReset;
+    </script>
+</body>
+
+</html>

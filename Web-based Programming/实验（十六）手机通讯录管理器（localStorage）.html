@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机通讯录管理器</title>
+    <style>
+        .container {
+            width: 450px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #EAEAEA;
+        }
+
+        fieldset {
+            text-align: center;
+        }
+
+        .button-box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 请勿改动id、button数量及顺序,其他可视情况更改 -->
+        <header>
+            <h2>手机通讯录管理器</h2>
+        </header>
+        <form onsubmit="return false;">
+            <fieldset>
+                <legend>简易手机通讯录</legend>
+                姓名：<input type="text" name="name" id="name"> <br>
+                电话：<input type="text" name="phone" id="phone">
+                <div class="button-box">
+                    <input type="button" value="添加" onclick="handleAdd()">
+                    <input type="button" value="查询" onclick="handleSearch()">
+                    <input type="button" value="删除" onclick="handleDelete()">
+                    <input type="button" value="重置" onclick="handleReset()">
+                </div>
+                <textarea name="content" id="content" cols="35" rows="12" readonly="readonly"></textarea>
+            </fieldset>
+        </form>
+        <div>
+            <h2>前端工作室设计 <br>版权所有&copy;,2017-2020</h2>
+        </div>
+    </div>
+    <script>
+        // 参考:
+        function loadData() {
+            $('content').value = "";
+            if (localStorage.length > 0) {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var phonet = localStorage.key(i);
+                    if (phonet != "web-account" && phonet != "web-guide1") {
+                        var namet = localStorage.getItem(phonet);
+                        $('content').value += namet + " " + phonet + "\n";
+                    }
+                }
+            }
+        }
+        function $(id) { return document.getElementById(id); }
+        // 处理添加
+        function handleAdd() {
+            var lopoi = document.getElementById('name').value;
+            var nnnmmm = document.getElementById('phone').value;
+            var ttyy = /^((?!\?|!|<|>|=|@|'|"|\(|\)).)*$/;
+            let t1 = 1;
+            var ggh = "";
+            if (lopoi == "") {
+                ggh += "姓名不能为空！\n";
+                // return;
+            } else if (!ttyy.test(lopoi)) {
+                ggh += "姓名不能含有特殊字符！\n";
+            }
+            let t2 = 1;
+            if (nnnmmm == "") {
+                ggh += "电话号码不能为空！\n";
+            } else if (!ttyy.test(nnnmmm)) {
+                ggh += "电话号码不能含有特殊字符！\n";
+            }
+
+            if (ggh != "") {
+                alert(ggh);
+                return;
+            }
+            let t3 = 1;
+            if (localStorage.length > 0) {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var phone_tmp = localStorage.key(i);
+                    if (phone_tmp == nnnmmm) {
+                        if (confirm("是否覆盖，更新旧姓名")) {
+                            localStorage.setItem(phone_tmp, lopoi);
+                            alert("更新成功");
+                            loadData();
+                            return;
+                        } else {
+                            return;
+                        }
+                    }
+                }
+            }
+            let t4 = 1;
+            localStorage.setItem(nnnmmm, lopoi);
+            handleReset();
+            handleSearch();
+
+
+        }
+
+        // 处理查询
+        function handleSearch() {
+            let t1 = 1;
+            if (t1 == 2)
+                t1 = 2;
+            var vmadf = document.getElementById('name').value;
+            var sdfeq = document.getElementById('phone').value;
+
+            var pppok = /^((?!\?|!|<|>|=|@|'|"|\(|\)).)*$/;
+            document.getElementById('content').value = "";
+            if (!pppok.test(vmadf) || !pppok.test(sdfeq))
+                return;
+            let t2 = 1;
+            for (var i = 0; i < localStorage.length; i++) {
+                var gdryn4 = localStorage.key(i);
+                if (gdryn4 != "web-account" && gdryn4 != "web-guide1") {
+                    var bbvd = localStorage.getItem(gdryn4);
+                    let t7 = 1;
+                    if
+                        (
+                        (bbvd.search(vmadf) != -1 && gdryn4.search(sdfeq) != -1) ||
+                        (bbvd.search(vmadf) != -1 && sdfeq == "") ||
+                        (vmadf == "" && gdryn4.search(sdfeq) != -1) ||
+                        (vmadf == "" && sdfeq == "")
+                    ) {
+                        $('content').value += bbvd + " " + gdryn4 + "\n";
+                        let t44 = 1;
+                    }
+
+                }
+            }
+
+        }
+        // 处理删除
+        function handleDelete() {
+            let t1 = 1;
+            var fgertt = document.getElementById('name').value;
+            var yyidt7 = document.getElementById('phone').value;
+            let t3 = 1;
+            var mes = "";
+            if (fgertt == "" && yyidt7 == "") {
+                alert("姓名和电话号码不能同时为空！");
+                return;
+            }
+            let t77 = 1;
+            var jji = new Array();
+            for (var i = 0; i < localStorage.length; i++) {
+                var tryesy = localStorage.key(i);
+                if (tryesy != "web-account" && tryesy != "web-guide1") {
+                    var sdfggd = localStorage.getItem(tryesy);
+                    let t88 = 1;
+                    if
+                        (
+                        (sdfggd.search(fgertt) != -1 && tryesy.search(yyidt7) != -1) ||
+                        (sdfggd.search(fgertt) != -1 && yyidt7 == "") ||
+                        (fgertt == "" && tryesy.search(yyidt7) != -1) ||
+                        (fgertt == "" && yyidt7 == "")
+                    ) {
+                        jji.push(tryesy);
+                    }
+
+                }
+            }
+
+            if (jji.length >= 2) {
+                alert("删除的内容匹配多项，删除失败！");
+            } else if (jji.length <= 0) {
+                alert("未找到符合删除条件的数据！");
+            } else if (confirm("确定删除吗")) {
+                localStorage.removeItem(jji[0]);
+                handleReset();
+                loadData();
+            }
+
+        }
+        // 处理重置
+        function handleReset() {
+            document.getElementById('name').value = "";
+            document.getElementById('phone').value = "";
+            document.getElementById('content').value = "";
+        }
+        // 页面加载时首先检测并初始化数据
+        loadData();
+
+        // 为了网站校验而需要额外设置的，正常情况下不需要
+        window.handleAdd = handleAdd;
+        window.handleSearch = handleSearch;
+        window.handleDelete = handleDelete;
+        window.handleReset = handleReset;
+    </script>
+</body>
+
+</html>

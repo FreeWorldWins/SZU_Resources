@@ -15,3 +15,5 @@ Computer course related resources.
 * Computer Systems (3), 2023F
 * Intelligent network and computing, 2023F
 * Automata Theory and Formal Language, 2023F
+* Web-based Programming, 2023F
+* Database Systems, 2023F
